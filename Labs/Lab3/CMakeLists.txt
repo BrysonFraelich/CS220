@@ -3,4 +3,4 @@ project(Labs)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(debugger debugger.c)
+add_executable(debugger lab3.c)
