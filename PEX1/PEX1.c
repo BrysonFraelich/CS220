@@ -6,6 +6,7 @@
  * ===========================================================
  */
 #include "PEX1.h"
+#include "WordCloud.h"
 
 
 /** -------------------------------------------------------------------
@@ -105,7 +106,7 @@ void PrintWordsToConsole(WordCount* argWordCount)
 
 int NumUniqueWords(WordCount* argWordCount)
 {
-    int i;
+    int i = 0;
     while(argWordCount[i].word	!= NULL)
     {
         i = 1;
@@ -196,7 +197,7 @@ WordCount* ReadStoryFile(STRING argFileName, WordCount* argExclusionList)
     } else
     {
         // open the file
-        FILE filePtr = NULL;
+        FILE *filePtr = NULL;
 
         filePtr = fopen(argFileName, "r");
 
