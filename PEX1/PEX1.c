@@ -109,7 +109,7 @@ int NumUniqueWords(WordCount* argWordCount)
     int i = 0;
     while(argWordCount[i].word	!= NULL)
     {
-        i = 1;
+        i = i + 1;
     }
 
     return i;
@@ -123,7 +123,7 @@ int NumUniqueWords(WordCount* argWordCount)
 WordCount* CreateWordCountArray(int argNumberOfWords)
 {
     WordCount *retWordCount;
-    retWordCount = malloc((argNumberOfWords + 1) * sizeof(int));
+    retWordCount = malloc((argNumberOfWords + 1) * sizeof(WordCount));
 
     for (int i = 0; i < argNumberOfWords + 1; i++)
     {
@@ -164,6 +164,7 @@ WordCount* ReadExclusionFile(STRING argFileName)
         WordCount* returnWordCount = CreateWordCountArray(numWords);
 
         // read in each word and add it to the array if it isn't already there
+        // while (fgets(charBuffer, MAX_WORD_LENGTH_STRING, argFileName) != NULL)
         while (fscanf(filePtr, "%"MAX_WORD_LENGTH_STRING"s", charBuffer) == 1)
         {
             RemovePunctuationMakeUpperCase(charBuffer);
@@ -266,7 +267,7 @@ void UpdateWordCount(WordCount* argWordCount, STRING argBuffer)
     }
 
     argWordCount[i].word = malloc(MAX_WORD_LENGTH * sizeof(char));
-    argWordCount[i].word = argBuffer;
+    strcpy(argWordCount[i].word, argBuffer);
     argWordCount[i].count = 1;
 
 }
