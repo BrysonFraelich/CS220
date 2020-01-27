@@ -16,6 +16,7 @@
  ****************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>                                                // Added #include <stdlib.h> to fix syntax error on line 38 (exit)
 #define MAX_NUMBERS	 1000	/* Max numbers in file */
 
 const char DATA_FILE[] = "numbers.dat";	/* File with numbers */
@@ -47,7 +48,7 @@ int main()
 	    break;
 
 	/* convert number */
-	sscanf(line, "%d", data[max_count]);
+	sscanf(line, "%d", &data[max_count]);                   // Added an & symbol in front of data[max_count}
 	++max_count;
     }
 
