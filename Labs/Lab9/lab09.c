@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 #include "lab09.h"
 
 // Local function prototypes
@@ -38,9 +39,43 @@ int main() {
  * @param lBound - the left bound of the sublist
  * @param rBound - the right bound of the sublist
  */
-int partition(int numbers[], int lBound, int rBound) {
+int Partition(int numbers[], int i, int k) {
+    int l = i;
+    int h = k;
+    int midpoint = 0;
+    int pivot = 0;
+    int temp = 0;
+    bool done = false;
 
+    // Pick middle element as pivot
+    midpoint = i + (k - i) / 2;
+    pivot = numbers[midpoint];
+
+    while (!done) {   // Increment l while numbers[l] < pivot
+
+        while (numbers[l] < pivot) {
+            ++l
+        }
+        // Decrement h while pivot < numbers[h]
+        while (pivot < numbers[h]) {
+            --h
+        }
+        // If there are zero or one elements remaining,
+        // all numbers are partitioned. Return h
+        if (l >= h) {
+            done = true
+        }
+        else {     // Swap numbers[l] and numbers[h], update l and h
+            temp = numbers[l]
+            numbers[l] = numbers[h]
+            numbers[h] = temp
+                    ++l
+                    --h
+        }
+    }
+    return h
 }
+
 
 
 /** -------------------------------------------------------------------
@@ -50,9 +85,25 @@ int partition(int numbers[], int lBound, int rBound) {
  * @param lBound - the starting index of the sublist to sort
  * @param rBound - the ending index of the sublist to sort
  */
-void quickSort(int numbers[], int lBound, int rBound) {
+void Quicksort(int numbers[], int i, int k) {
+    j = 0
 
+    // Base case: If there are 1 or zero elements to sort,
+    // partition is already sorted
+    if (i >= k) {
+        return
+    }
+
+    // Partition the data within the array. The value returned
+    // from Partition() is the index of the last element in low partition.
+    j = Partition(numbers, i, k)
+
+    // Recursively sort low partition (indices i to j) and
+    // high partition (indices j + 1 to k)
+    Quicksort(numbers, i, j)
+    Quicksort(numbers, j + 1, k)
 }
+
 
 //swaps two integer values
 void swap(int* x, int* y) {
