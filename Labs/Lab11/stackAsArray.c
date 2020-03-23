@@ -1,7 +1,7 @@
 /** stackAsArray.c
 * ================================================================
-* Name: first last
-* Section: xxx
+* Name: Bryson Fraelich 
+* Section: M3 
 * Project: Example11a - Stack ADT implmented as an array and palindromes
 * =================================================================
 *
